@@ -31,54 +31,53 @@ function numberOfQuestions() {
   return quiz.questions.length
 }
 
-numberOfQuestions()
-
 // It should return an integer that is the zero-based index of the current question in the quiz
 function currentQuestion() {
-  return quiz.questions[quiz.questionIndex]
+  console.log(quiz.questions);
+  return quiz.questionIndex
 }
-
-currentQuestion()
 
 // It should return an integer that is the zero-based index the correct answer for the currrent question
 function correctAnswer() {
   return quiz.questions[quiz.questionIndex].answer
 }
 
-correctAnswer()
-
 // It should return an integer that is the number of choices for the current question
 function numberOfAnswers() {
   return quiz.questions[quiz.questionIndex].choices.length
 }
 
-numberOfAnswers()
-
 // It should take a single integer, which specifies which choice the current player wants to make.
 // It should return a boolean true/false if the answer is correct.
 function playTurn(choice) {
-  if (choice === quiz.questions[quiz.questionIndex].answer) {
-  // if (this.choices[choice] === this.answer && this.choices[choice] === playerTurn)
-    if (quiz.playerTurn === 1) {
+  if (choice === quiz.questions[quiz.questionIndex].answer) { //check for correct answer
+    if (quiz.playerTurn === 1) { //check for which player turn
       playerTurn = 2
+      quiz.player1score++ //give 1 point to player 1
     }
-    else if (quiz.playerTurn === 2) {
+    else {
       playerTurn = 1
+      quiz.player2score++ //give 1 point to player 2
     }
-    return true
+    quiz.questionIndex++
+    return true //if player selects correct answer + check play turn + giving score
   }
   else {
+    if (quiz.playerTurn === 1) {
+      playerTurn = 2
+    } else {
+      playerTurn = 1
+    }
+    quiz.questionIndex ++
     return false
   }
 }
 
-console.log(playTurn(0));
 
 // It should return a true or false if the quiz is over.
 function isGameOver() {
   return quiz.isGameOver
 }
-
 
 // It should return 0 if the game is not yet finished.
 // Else it should return either 1 or 2 depending on which player won.
@@ -100,8 +99,6 @@ function whoWon() {
   }
 }
 
-console.log(whoWon());
-
 // It should restart the game so it can be played again.
 function restart() {
   quiz.questionIndex = 0
@@ -110,5 +107,3 @@ function restart() {
   quiz.player2score = 0
   quiz.playerTurn = 1
 }
-
-console.log(restart());
