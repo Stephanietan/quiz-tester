@@ -1,6 +1,7 @@
 /*global isGameOver, whoWon, playTurn, restart, currentQuestion, numberOfQuestions, numberOfAnswers,  correctAnswer*/
 /* quiz-tester.js
 
+
 This script will test the game logic of your multiple choice quiz.
 To use it you will need to include it in your html file after you main quiz script.
 You will need to declare the following functions in the global scope:
@@ -36,6 +37,9 @@ ASSUMPTIONS
 It is assumed that the turns of the player will be automatically changed after each turn.
 
 The application will console log all the passed or failed test */
+
+// load the myQuiz
+// var myQuiz = require('myQuiz.js');
 
 // CONFIG
 var showPasses = true
